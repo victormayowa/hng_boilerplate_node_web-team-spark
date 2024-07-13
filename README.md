@@ -266,9 +266,15 @@ This project is versioned to ensure backward compatibility and easy maintenance.
 
 Welcome to Team Spark contribution to the NodeJS Boilerplate. This document outlines our API and database designs and provides instructions for setting up and contributing to this repository.
 
+
+
 ## API Design
 
-Our API design is crafted using OpenAPI (formerly known as Swagger). The design ensures a robust and comprehensive structure for all endpoints. Below are the details of our API design:
+Our API design is crafted using OpenAPI (formerly known as Swagger). The design ensures a robust and comprehensive structure for all endpoints. 
+
+The link to [API design can be found here](https://app.swaggerhub.com/apis/Backend_Node_Express/Boilerplate/1.0.0).
+
+Below are the details of our API design:
 
 ### Endpoints
 
@@ -469,4 +475,4 @@ Our database design is structured to be scalable and efficient. We use a relatio
 
 ### Database Schema
 
-The complete database schema can be found [here]([Database Schema](https://drive.google.com/file/d/1BCwhD5hF5ZG3IwH7HhUEGsBRrFcYaAkS/view?usp=sharing)).
+The complete database schema can be found ([Database Schema](https://drive.google.com/file/d/1BCwhD5hF5ZG3IwH7HhUEGsBRrFcYaAkS/view?usp=sharing)).
