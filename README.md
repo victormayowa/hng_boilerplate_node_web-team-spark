@@ -355,7 +355,7 @@ Our API design is crafted using OpenAPI (formerly known as Swagger). The design 
 
 ### OpenAPI Specification
 
-The complete OpenAPI specification can be found [here]([https://app.swaggerhub.com/apis/Backend_Node_Express/Boilerplate/1.0.0](https://drive.google.com/file/d/1K-7tN1S6JOqorYkfJvbkBGVAZbr4I3ua/view?usp=sharing)).
+The complete OpenAPI specification can be found [here]([APIDesign](https://drive.google.com/file/d/1K-7tN1S6JOqorYkfJvbkBGVAZbr4I3ua/view?usp=sharing)).
 
 ## Database Design
 
@@ -469,4 +469,4 @@ Our database design is structured to be scalable and efficient. We use a relatio
 
 ### Database Schema
 
-The complete database schema can be found [here]([https://link-to-database-schema](https://drive.google.com/file/d/1BCwhD5hF5ZG3IwH7HhUEGsBRrFcYaAkS/view?usp=sharing)).
+The complete database schema can be found [here]([DatabaseSchema](https://drive.google.com/file/d/1BCwhD5hF5ZG3IwH7HhUEGsBRrFcYaAkS/view?usp=sharing)).
