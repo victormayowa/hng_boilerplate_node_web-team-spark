@@ -274,11 +274,24 @@ Our API design is crafted using OpenAPI (formerly known as Swagger). The design 
 
 The link to [API design can be found here](https://app.swaggerhub.com/apis/Backend_Node_Express/Boilerplate/1.0.0).
 
-Below are the details of our API design:
+Below are some of the details of our API design, the full API design can be found in the above link:
 
 ### Endpoints
 
 # API Endpoints Documentation
+
+## /auth/register
+**POST**
+- **Description:** Register a user
+- **Request Body:**
+  - `firstName` (string, example: 'John')
+  - `lastName` (string, example: 'Doe')
+  - `email` (string, example: 'john.doe@example.com')
+  - `password` (string, example: 'password258')
+  - `phone` (string, example: '0800589657526')
+- **Responses:**
+  - `201`: User registered successfully
+  - `401`: Invalid credentials
 
 ## /auth/login
 **POST**
@@ -287,7 +300,7 @@ Below are the details of our API design:
   - `email` (string, example: 'john.doe@example.com')
   - `password` (string, example: 'password258')
 - **Responses:**
-  - `201`: User logged in successfully
+  - `200`: User logged in successfully
   - `401`: Invalid credentials
 
 ## /auth/change-password
@@ -373,10 +386,11 @@ Our database design is structured to be scalable and efficient. We use a relatio
 - **Primary Key:**
   - `user_id` int NOT NULL
 - **Columns:**
-  - `first_name` char(50) NOT NULL
+  - `firstName` char(50) NOT NULL
+  - `lastName` char(50) NOT NULL
   - `email` char(50) NOT NULL
   - `password` char(50) NOT NULL
-  - `phone_number` char(50) NOT NULL
+  - `phone` char(50) NOT NULL
   - `referral_id` char(50) NULLABLE
   - `role` char(50) NOT NULL
 
