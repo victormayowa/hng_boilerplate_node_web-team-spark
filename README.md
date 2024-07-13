@@ -254,3 +254,229 @@ All API endpoints can be referenced in the [API Reference](API_REFERENCE.md) doc
 ## Versioning
 
 This project is versioned to ensure backward compatibility and easy maintenance. The current version is [version].
+
+
+
+
+
+
+# Team Spark Contribution - NodeJs Boilerplate
+
+## Introduction
+
+Welcome to Team Spark contribution to the NodeJS Boilerplate. This document outlines our API and database designs and provides instructions for setting up and contributing to this repository.
+
+## API Design
+
+Our API design is crafted using OpenAPI (formerly known as Swagger). The design ensures a robust and comprehensive structure for all endpoints. Below are the details of our API design:
+
+### Endpoints
+
+# API Endpoints Documentation
+
+## /auth/login
+**POST**
+- **Description:** Login a user
+- **Request Body:**
+  - `email` (string, example: 'john.doe@example.com')
+  - `password` (string, example: 'password258')
+- **Responses:**
+  - `201`: User logged in successfully
+  - `401`: Invalid credentials
+
+## /auth/change-password
+**POST**
+- **Description:** Change user password
+- **Request Body:**
+  - `oldPassword` (string, example: 'oldpassword123')
+  - `newPassword` (string, example: 'newpassword123')
+- **Responses:**
+  - `200`: Password changed successfully
+  - `400`: Invalid input
+  - `401`: Unauthorized
+
+## /auth/social-login
+**POST**
+- **Description:** Social login for users
+- **Request Body:**
+  - `provider` (string, example: 'google')
+  - `token` (string, example: 'socialauth_token')
+- **Responses:**
+  - `200`: User logged in successfully
+  - `400`: Invalid input
+
+## /auth/forgot-password
+**POST**
+- **Description:** Forgot password
+- **Request Body:**
+  - `email` (string, format: email)
+- **Responses:**
+  - `200`: Password reset link sent to your registered email successfully
+  - `400`: Bad request
+
+## /auth/reset-password
+**POST**
+- **Description:** Reset password
+- **Request Body:**
+  - `token` (string)
+  - `newPassword` (string, format: password)
+- **Responses:**
+  - `200`: Password reset successfully
+  - `400`: Wrong credentials
+  - `401`: Unauthorized
+
+## /users/{userId}
+**GET**
+- **Description:** Get user profile
+- **Parameters:**
+  - `userId` (string, example: '5f8d0d55b54764421b7156c7')
+- **Responses:**
+  - `200`: User profile retrieved successfully
+  - `404`: User not found
+
+## /users
+**GET**
+- **Description:** Get list of users
+- **Parameters:**
+  - `page` (integer, example: 1)
+  - `limit` (integer, example: 10)
+- **Responses:**
+  - `200`: List of users retrieved successfully
+
+## /admin/users
+**GET**
+- **Description:** Admin - Get all users
+- **Parameters:**
+  - `page` (integer, example: 1)
+  - `limit` (integer, example: 10)
+- **Responses:**
+  - `200`: List of users retrieved successfully
+
+
+### OpenAPI Specification
+
+The complete OpenAPI specification can be found [here]([https://app.swaggerhub.com/apis/Backend_Node_Express/Boilerplate/1.0.0](https://drive.google.com/file/d/1K-7tN1S6JOqorYkfJvbkBGVAZbr4I3ua/view?usp=sharing)).
+
+## Database Design
+
+Our database design is structured to be scalable and efficient. We use a relational database model to manage user data and related entities.
+
+### Entities
+
+## Users
+- **Primary Key:**
+  - `user_id` int NOT NULL
+- **Columns:**
+  - `first_name` char(50) NOT NULL
+  - `email` char(50) NOT NULL
+  - `password` char(50) NOT NULL
+  - `phone_number` char(50) NOT NULL
+  - `referral_id` char(50) NULLABLE
+  - `role` char(50) NOT NULL
+
+## Notification
+- **Primary Key:**
+  - `notification_id` int NOT NULL
+- **Columns:**
+  - `title` char(50) NOT NULL
+  - `message` char(255) NOT NULL
+  - `user_id` char(50) NULL
+- **Foreign Key:**
+  - `user_id` references `Users(user_id)`
+
+## Address
+- **Primary Key:**
+  - `address_id` int NOT NULL
+- **Columns:**
+  - `street` char(50) NOT NULL
+  - `city` char(50) NOT NULL
+  - `postal_code` char(50) NOT NULL
+  - `state` char(50) NOT NULL
+  - `country` char(50) NOT NULL
+  - `region` char(50) NULL
+  - `user_id` int NOT NULL
+- **Foreign Key:**
+  - `user_id` references `Users(user_id)`
+
+## User_Organisations
+- **Primary Key:**
+  - `id` int NOT NULL
+- **Columns:**
+  - `organisation_id` int NOT NULL
+  - `user_id` int NOT NULL
+  - `is_owner` boolean
+- **Foreign Keys:**
+  - `organisation_id` references `Organisations(organisation_id)`
+  - `user_id` references `Users(user_id)`
+
+## Blog
+- **Primary Key:**
+  - `blog_id` int NOT NULL
+- **Columns:**
+  - `user_id` int NOT NULL
+  - `title` char(50) NOT NULL
+  - `post` char(50) NOT NULL
+  - `created_at_time` NOT NULL
+  - `updated_at_time` NOT NULL
+- **Foreign Key:**
+  - `user_id` references `Users(user_id)`
+
+## Payments
+- **Primary Key:**
+  - `payment_id` int NOT NULL
+- **Columns:**
+  - `user_id` char(50) NOT NULL
+  - `timestamp` NOT NULL
+  - `amount` char(50) NOT NULL
+  - `status` char(50) NOT NULL
+- **Foreign Key:**
+  - `user_id` references `Users(user_id)`
+
+## Feedback
+- **Primary Key:**
+  - `feedback_id` int NOT NULL
+- **Columns:**
+  - `name` char(50) NOT NULL
+  - `email` char(50) NOT NULL
+  - `subject` char(50) NOT NULL
+  - `message` char(255) NOT NULL
+  - `phone_number` char(50) NULL
+
+## Waitlist
+- **Primary Key:**
+  - `id` int NOT NULL
+- **Columns:**
+  - `email` char(50) NOT NULL
+  - `created_at` char(50) NOT NULL
+
+## Organisations
+- **Primary Key:**
+  - `organisation_id` int NOT NULL
+- **Columns:**
+  - `organisation_name` char(50) NOT NULL
+  - `address` char(50) NOT NULL
+  - `business_no` int NOT NULL
+
+## Email Templates
+- **Primary Key:**
+  - `template_id` int NOT NULL
+- **Columns:**
+  - `title` char(50) NOT NULL
+  - `subject` char(50) NOT NULL
+  - `content` char(50) NOT NULL
+  - `created_at` date NOT NULL
+  - `updated_at` date NOT NULL
+
+### Database Schema
+
+The complete database schema can be found [here]([https://link-to-database-schema](https://drive.google.com/file/d/1BCwhD5hF5ZG3IwH7HhUEGsBRrFcYaAkS/view?usp=sharing)).
+
+## Contribution Instructions
+
+To contribute to this project, follow the steps below:
+
+1. **Fork the Repository**
+   - Fork the NodeJS boilerplate repository
+
+2. **Clone the Repository**
+   ```bash
